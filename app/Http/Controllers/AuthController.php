@@ -21,6 +21,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            return Redirect::route('Chat');
         }
 
         return Redirect::route('Login')->withErrors([

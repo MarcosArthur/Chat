@@ -15,7 +15,8 @@ class MessageObserver
      */
     public function created(Message $message)
     {
-        event(new SendMessage($message));
+       event(new SendMessage($message));
+        // ;
     }
 
     /**

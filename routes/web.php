@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'index'])->name("Login");
 Route::post('authenticate', [AuthController::class, 'authenticate']);
+
+
+Route::get("/Chat", [ChatController::class, 'index'])->name('Chat');
+Route::get("/save", [ChatController::class, 'save'])->name('save');
