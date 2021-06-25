@@ -19,4 +19,14 @@ class ChatController extends Controller
             'users' => $users
         ]);
     }
+
+    public function save()
+    {
+        $message = new Message();
+        $message->from = 2;
+        $message->to = 1;
+        $message->body = 'tj';
+        
+        $message->save();
+    }
 }

@@ -24,7 +24,7 @@ class AuthController extends Controller
             return Redirect::route('Chat');
         }
 
-        return Redirect::route('Login')->withErrors([
+        return Redirect::route('login')->withErrors([
             'fail_authenticate' => "E-mail e/ou senha errados"
         ]);
     }
