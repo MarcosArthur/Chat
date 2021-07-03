@@ -1,17 +1,17 @@
 <template>
   <div>
-    <header>
-      <h4>cadastre-se</h4>
+    <header class="cabecalho">
+      <div class="cabecalho-nav">
+        <inertia-link href="/"> ← </inertia-link>
+        <h4>Cadastre-se</h4>
+      </div>
     </header>
 
-    <main>
-      <form @submit.prevent="handleFormRegister()">
+    <main class="main">
+      <form @submit.prevent="handleFormRegister()" class="form">
         <label>Nome</label>
-        <input type="email" v-model="form.nome" @focus="errors.name = ''" />
-        <small v-if="errors.name" class="text-danger">{{
-          errors.name
-        }}</small>
-
+        <input type="text" v-model="form.name" @focus="errors.name = ''" />
+        <small v-if="errors.name" class="text-danger">{{ errors.name }}</small>
 
         <label>E-mail</label>
         <input type="email" v-model="form.email" @focus="errors.email = ''" />
@@ -29,8 +29,7 @@
           errors.password
         }}</small>
 
-
-         <label>Confirma senha</label>
+        <label>Confirma senha</label>
         <input
           type="password"
           v-model="form.password_confirmation"
@@ -47,13 +46,13 @@
 
 <script>
 export default {
-   props: {
+  props: {
     errors: Object,
   },
   methods: {
     handleFormRegister() {
-       this.$inertia.post('/register', this.form)
-    }
+      this.$inertia.post("/register", this.form);
+    },
   },
   data() {
     return {
@@ -61,12 +60,82 @@ export default {
         name: "",
         email: "",
         password: "",
-        password_confirmation: ""
+        password_confirmation: "",
       }),
     };
   },
 };
 </script>
 
-<style>
+<style scoped>
+* {
+  box-sizing: border-box;
+}
+.cabecalho {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: white;
+  font-size: 20px;
+}
+
+.cabecalho-nav {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 50%;
+  padding: 30px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.form input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: #f7f7f7;
+}
+
+.form button {
+  margin-top: 30px;
+  font-family: sans-serif;
+  font-size: 0.9em;
+  padding: 0.6rem 2rem;
+  border: none;
+  background: #ffb801;
+  border-radius: 4px;
+  color: #402d00;
+}
+
+small {
+  display: block;
+  margin-top: 5px;
+}
+
+@media all and (max-width:720px) {
+  .cabecalho-nav {
+    width: 60%;
+  }
+
+  .form {
+    width: 90%;
+  }
+}
 </style>

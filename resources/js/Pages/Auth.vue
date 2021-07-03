@@ -11,7 +11,7 @@
 
      <div class="alert" @click="errors.fail_authenticate = ''" v-if="errors.fail_authenticate">{{errors.fail_authenticate}}</div>
   
-  <inertia-link href="sign-up">Home</inertia-link>
+  <inertia-link href="sign-up">Cadastre-se</inertia-link>
   </form>
 
  
